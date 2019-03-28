@@ -1,0 +1,108 @@
+<html>
+
+<script>
+function tableFilter() {
+
+		var input, filter, table, tr, td, i;
+		input = document.getElementById("myInput");
+		filter = input.value.toUpperCase();
+		table = document.getElementById("myTable");
+		tr = table.getElementsByTagName("tr");
+		for (i = 0; i < tr.length; i++) {
+		
+			td = tr[i].getElementsByTagName("td")[0];
+			if (td) {
+				if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+					tr[i].style.display = "";
+				} else {
+					tr[i].style.display = "none";
+				}
+			}       
+		}
+	}
+</script>
+
+<body>
+
+
+
+<table id="myTable">
+						<tr class="header">
+							
+					<input type="text" id="myInput" onkeyup="tableFilter()" placeholder="Search for content.." title="Type in a name">
+		
+						
+						<br><br>
+						</tr>
+
+						<tr>
+							<td>
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h3 class="panel-title">
+											<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#qa1">
+												<i class="fa fa-angle-right pull-right"></i>
+											</a>
+										</h3>
+									</div>
+									<div id="qa1" class="panel-collapse collapse">
+										<div class="panel-body">
+
+															<h3>Game</h3>
+											
+											<p>A game is a structured form of play, usually undertaken for enjoyment and sometimes used as an educational tool.Games are distinct from work, which is usually carried out for remuneration, and from art, which is more often an expression of aesthetic or ideological elements. However, the distinction is not clear-cut, and many games are also considered to be work (such as professional players of spectator sports or games) or art (such as jigsaw puzzles or games involving an artistic layout such as Mahjong, solitaire, or some video games).</p>
+
+											<p>Games are sometimes played purely for entertainment, sometimes for achievement or reward as well. They can be played alone, in teams, or online; by amateurs or by professionals. The players may have an audience of non-players, such as when people are entertained by watching a chess championship. On the other hand, players in a game may constitute their own audience as they take their turn to play. Often, part of the entertainment for children playing a game is deciding who is part of their audience and who is a player.</p>
+
+											<p>Key components of games are goals, rules, challenge, and interaction. Games generally involve mental or physical stimulation, and often both. Many games help develop practical skills, serve as a form of exercise, or otherwise perform an educational, simulational, or psychological role.</p>
+
+											<p>Attested as early as 2600 BC, games are a universal part of human experience and present in all cultures. The Royal Game of Ur, Senet, and Mancala are some of the oldest known games.</p>
+													</div>
+									</div>
+								</div>
+							</td>						
+						</tr>
+						
+						<tr>
+							<td>
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h3 class="panel-title">
+											<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#qa1">	
+												<i class="fa fa-angle-right pull-right"></i>
+											</a>
+										</h3>
+									</div>
+									<div id="qa1" class="panel-collapse collapse">
+										<div class="panel-body">
+
+						
+						
+											<h3>Definitions</h3>
+											<h4>Ludwig Wittgenstein</h4>
+											<p>Ludwig Wittgenstein was probably the first academic philosopher to address the definition of the word game. In his Philosophical Investigations, Wittgenstein argued that the elements of games, such as play, rules, and competition, all fail to adequately define what games are. From this, Wittgenstein concluded that people apply the term game to a range of disparate human activities that bear to one another only what one might call family resemblances. As the following game definitions show, this conclusion was not a final one and today many philosophers, like Thomas Hurka, think that Wittgenstein was wrong and that Bernard Suits' definition is a good answer to the problem.</p>
+											
+											<h4>Roger Caillois</h4>
+											
+												<p>French sociologist Roger Caillois, in his book Les jeux et les hommes (Games and Men),defined a game as an activity that must have the following characteristics:</p>
+												<p>fun: the activity is chosen for its light-hearted character</p>
+												<p>separate: it is circumscribed in time and place</p>
+												<p>uncertain: the outcome of the activity is unforeseeable</p>
+												<p>non-productive: participation does not accomplish anything useful</p>
+												<p>governed by rules: the activity has rules that are different from everyday life</p>
+												<p>fictitious: it is accompanied by the awareness of a different reality</p>
+
+										</div>
+									</div>
+								</div>
+							</td>						
+						</tr>
+						
+						
+						
+					</table>
+					
+					
+</body>
+
+</html>

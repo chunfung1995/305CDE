@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--JQuery libs-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+$(document).ready(function(){
+	//Temp API
+	$.ajax({
+		url : "http://api.wunderground.com/api/b20b6bbf1fd069a8/geolookup/conditions/q/HK/HongKong.json",
+		dataType : "jsonp",
+		success : function(parsed_json) {
+			var temp_c = parsed_json['current_observation']['temp_c'];
+			document.getElementById("temperature").innerHTML = temp_c + "&deg;C";
+		}
+	});
+
+});
+
+</script>
+
+<head>
+	<!--Meta file-->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Gaming Engrossed</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="css/clean-blog.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"> 
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+	
+<style>
+/* Popup container - can be anything you want */
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* The actual popup */
+.popup .popuptext {
+    visibility: hidden;
+    width: 160px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+}
+</style>	
+	
+</head>
+
+
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    Menu <i class="fa fa-bars"></i>
+                </button>
+				<!-- Home Page -->
+                <a class="navbar-brand" href="index.html">Gaming Engrossed</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+				<!--Weather API -->
+					<li>
+					  <font color="White">Hong Kong<div id="temperature" class="temp-link"></div></font>
+					</li>
+					
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="about.html">About</a>
+                    </li>
+                    <li>
+                        <a href="post.html">Sample Post</a>
+                    </li>
+					
+					<!--Click the button to random page-->
+                    <li>
+					<button onclick="randomPageFunction()">Random Post</button>
+                    </li>
+					
+					<!--Go random page JavaScript -->
+					<script>
+					function randomPageFunction() {
+					var x = Math.floor((Math.random() * 4) + 1);
+					if (x == 1) {
+					 window.location.href="post.html"
+					 }
+					 
+					if (x == 2) {
+					 window.location.href="post2.html"
+					 }
+					 
+					if (x == 3) {
+					 window.location.href="post3.html"
+					 }
+					 
+					if (x == 4) {
+					 window.location.href="post4.html"
+					 }
+					 
+					}
+					</script>
+					
+					 <li>
+					 <a href="game.html" target="_blank">Mini Game</a>                 
+                    </li>
+					
+	
+					
+					<li>
+					<a href="video.html">Video</a>
+					</li>
+					
+					<li>
+					<a href="music.html" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=100,toolbar=1,resizable=0'); return false;" >Music</a>
+					
+					</li>
+                  
+           <li>
+					      <a href="search.html">Search</a>
+					</li>
+          
+									
+					<li>
+                     <a href="login.html">LOGIN</a>
+          </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('img/virtual-worlds.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        <h1>Gaming Disorder</h1>
+                        <hr class="small">
+                        <span class="subheading">World Health Organization defined in the draft 11th Revision of the International Classification of Diseases</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-preview">
+				<!--link -->
+                    <a href="post.html">
+                        <h2 class="post-title">
+                            WHO | Gaming disorder - World Health Organization
+                        </h2>
+                        <h3 class="post-subtitle">
+                            Gaming disorder is defined in the International Classification of Diseases (ICD-11) as a pattern of gaming behavior 
+                        </h3>
+                    </a>
+                    <p class="post-meta">Posted by <a href="http://www.who.int/features/qa/gaming-disorder/en/">World Health Organization</a> on January, 2018</p>
+                </div>
+                <hr>
+                <div class="post-preview">
+				<!--link -->
+                    <a href="post2.html">
+                        <h2 class="post-title">
+                            What is gaming disorder?
+                        </h2>
+                    </a>
+                    <p class="post-meta">Posted by <a href="https://www.medicalnewstoday.com/articles/322478.php">Medical News Today</a> Mon 16 July 2018</p>
+					<p>For a diagnosis, these behaviors must be so severe that they affect a person's:
+					
+					<ul>
+					<li>family life</li>
+					<li>social life</li>
+					<li>personal life</li>
+					<li>education</li>
+					<li>work</li>
+					
+					</ul>
+
+					</p>
+                </div>
+                <hr>
+                <div class="post-preview">
+				<!--link -->
+                    <a href="post3.html">
+                        <h2 class="post-title">
+                             What is game?
+                        </h2>
+                        <h3 class="post-subtitle">
+							A game is a structured form of play, usually undertaken for enjoyment and sometimes used as an educational tool.[1] Games are distinct from work, which is usually carried out for remuneration, and from art, which is more often an expression of aesthetic or ideological elements. However, the distinction is not clear-cut, and many games are also considered to be work (such as professional players of spectator sports or games) or art (such as jigsaw puzzles or games involving an artistic layout such as Mahjong, solitaire, or some video games).
+                        </h3>
+                    </a>
+                    <p class="post-meta">From <a href="https://en.wikipedia.org/wiki/Game">Wikipedia</a>, the free encyclopedia</p>
+                </div>
+                <hr>
+                <div class="post-preview">
+				<!--link -->
+                    <a href="post4.html">
+                        <h2 class="post-title">
+                           What is video game?
+                        </h2>
+                        <h3 class="post-subtitle">
+                                                      Gaming is the running of specialized applications known as electronic games or video games on game consoles like X-box and or on personal computers(in which case the activity is known as online gaming). The term "gaming" originated as a synonym for "gambling" although most electronic games today do not involve gambling in the traditional sense.
+                        </h3>
+                    </a>
+                    <p class="post-meta">Posted by <a href="https://whatis.techtarget.com/definition/gaming">Margaret Rouse</a></p>
+					
+                </div>
+                <hr>
+                <!-- Pager -->
+				
+
+
+
+
+
+<script>
+// When the user clicks on div, open the popup
+function myFunction() {
+    var popup = document.getElementById("myPopup");
+    popup.classList.toggle("show");
+}
+</script>
+				 <!-- Pager -->
+                <ul class="pager">
+                    <li class="next">
+                       <div class="popup" onclick="myFunction()"> Older Posts&rarr;
+					    <span class="popuptext" id="myPopup">No More Posts!</span>
+						</div>
+                    </li>
+                </ul>
+				
+  
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        <li>
+						<!--Link to WHO Twitter -->
+                            <a href="https://twitter.com/who">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+						<!--Link to WHO Facebook -->
+                            <a href="https://www.facebook.com/WHO/">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+						<!--Link to STEAM STORE -->
+                            <a href="https://store.steampowered.com/">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-steam-square fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted">Copyright &copy; Yip Chun Fung 2018</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+	
+
+	
+    <script src="vendor/jquery/jquery.min.js"></script>
+	
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="js/clean-blog.min.js"></script>
+
+</body>
+
+</html>

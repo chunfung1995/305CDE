@@ -1,0 +1,196 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css "href="css/web.css"/>
+</head>
+ <style>
+   <tr>
+          <td class = "tabnum"></td>
+           <td class = "tabname"></td>
+           <td class = "tablink"></td>
+          </tr>
+          <tr>
+          <td class = "tabnum"></td>
+           <td class = "tabname"></td>
+           <td class = "tablink"></td>
+          </tr>
+  </style>
+
+<script>
+$(document).ready(function()
+{   
+
+   
+  $("#btnsignup").click(function()
+	{
+		//alert("callnow");
+		var tempSearch;
+		//tempSearch = document.forms["search"]["searchkey"].value;
+		if(tempSearch == "")
+			{
+				alert("Please fill the field.");
+			}
+		else
+			{
+         var login=$("#login").val();
+         var pass=$("#mypass").val();
+        
+          var mydata="user="+login+"&pass="+pass;
+        alert(mydata);
+				$.ajax(
+				{
+					/*url: "http://port-9000.305server-idm4smb32469.codeanyapp.com/Login", */
+					url: "http://10.10.4.9:8080/Signup",
+					type: 'POST',
+					data: mydata,
+					success: function(resultReturn)
+					{ 
+						//alert("search success");
+           alert(resultReturn);
+						//alert(JSON.stringify(resultReturn));
+			      var _stringObj = JSON.stringify(resultReturn);
+			      var stringObj = JSON.parse(resultReturn);
+			      for(i = 0; i < stringObj.length; i++)
+            {
+					    var num = i + 1;
+					    document.getElementsByClassName("tabnum")[i].innerHTML = num;
+					    document.getElementsByClassName("tabname")[i].innerHTML = stringObj[i].texttitle;
+				      document.getElementsByClassName("tablink")[i].innerHTML = stringObj[i].command;
+				     }
+					},error: function (xhr, textStatus, errorThrown) 
+					{
+						alert("search failed");
+						console.log(textStatus);
+            alert(xhr.responseText);
+      		}
+				});
+			}
+   });
+   
+    $("#btnlogin").click(function()
+	{
+		//alert("callnow");
+		var tempSearch;
+		//tempSearch = document.forms["search"]["searchkey"].value;
+		if(tempSearch == "")
+			{
+				alert("Please fill the field.");
+			}
+		else
+			{
+         var login=$("#login").val();
+         var pass=$("#mypass").val();
+        
+          var mydata="user="+login+"&pass="+pass;
+        alert(mydata);
+				$.ajax(
+				{
+					/*url: "http://port-9000.305server-idm4smb32469.codeanyapp.com/Login", */
+					url: "http://10.10.4.9:8080/Login",
+					type: 'POST',
+					data: mydata,
+					success: function(resultReturn)
+					{ 
+						//alert("search success");
+           alert("login result="+resultReturn);
+					
+					if(resultReturn=="Login Success"){
+					  localStorage.setItem("mylogin",login);
+					  alert(localStorage.getItem("mylogin"));
+					    window.location.href="/favlistpage";
+					 }
+					},error: function (xhr, textStatus, errorThrown) 
+					{
+						alert("search failed");
+						console.log(textStatus);
+            alert(xhr.responseText);
+      		}
+				});
+			}
+   });
+   
+   
+   
+   
+   $("#btnsearch").click(function()
+	{
+		//alert("callnow");
+		var tempSearch;
+		//tempSearch = document.forms["search"]["searchkey"].value;
+		if(tempSearch == "")
+			{
+				alert("Please fill the field.");
+			}
+		else
+			{
+         var searchtext=$("#searchtext").val();
+         //var pass=$("#mypass").val();
+        
+          var mydata="searchtext="+searchtext;
+        alert(mydata);
+				$.ajax(
+				{
+					/*url: "http://port-9000.305server-idm4smb32469.codeanyapp.com/Login", */
+					url: "http://10.10.4.9:8080/Search",
+					type: 'POST',
+					data: mydata,
+					success: function(resultReturn)
+					{ 
+						//alert("search success");
+           alert("login result="+resultReturn);
+					
+					if(resultReturn=="Login Success"){
+					  localStorage.setItem("mylogin",login);
+					  alert(localStorage.getItem("mylogin"));
+					    window.location.href="/favlistpage";
+					 }
+					},error: function (xhr, textStatus, errorThrown) 
+					{
+						alert("search failed");
+						console.log(textStatus);
+            alert(xhr.responseText);
+      		}
+				});
+			}
+   });
+});
+</script>
+<body>
+  <div class = "mask">
+	<div class = "style1">Gaming Engrossed</div>
+  <a href="/favouritelistpage.html">favourite list</a> <a href="/logout">log out</a>
+  	<br>
+  	<form id="formID" name="search">
+			login: <input type="text" id="login"/>
+      pass: <input type="password" id="mypass"/>
+		</form>
+  	<button id="btnsignup" class="button button1">
+    	Signup
+  	</button>
+	<button id="btnlogin" class="button button1">
+    	Login
+  	</button>
+	<br>
+	<br>
+	
+    <br>
+  <table id="mytable">
+      <tr>
+          <td class = "tabnum"></td>
+           <td class = "tabname"></td>
+           <td class = "tablink"></td>
+          </tr>
+          <tr>
+          <td class = "tabnum"></td>
+           <td class = "tabname"></td>
+           <td class = "tablink"></td>
+          </tr>
+  </table>
+
+	
+	
+	
+
+</body>
+
+</html>

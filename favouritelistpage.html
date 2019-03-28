@@ -1,0 +1,208 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css "href="css/web.css"/>
+</head>
+ <style>
+   <tr>
+          <td class = "tabnum"></td>
+           <td class = "tabname"></td>
+           <td class = "tablink"></td>
+          </tr>
+          <tr>
+          <td class = "tabnum"></td>
+           <td class = "tabname"></td>
+           <td class = "tablink"></td>
+          </tr>
+  </style>
+
+<script>
+$(document).ready(function()
+{   
+    mylogin=localStorage.getItem("mylogin");
+	
+	if(mylogin==""){
+	alert("Please login first");
+	return;
+	}
+  
+  $("button").click(function()
+	{
+		
+		if(this.id=="fav1"){
+		  favtext=$("#fav1text").html();
+		}else if(this.id=="fav2"){
+		  favtext=$("#fav2text").html();
+		}
+		
+	
+        
+          var mydata="user="+mylogin+"&fav="+favtext;
+        alert(mydata);
+				$.ajax(
+				{
+					/*url: "http://port-9000.305server-idm4smb32469.codeanyapp.com/Login", */
+					url: "http://127.0.0.1:8080/addfavourlist",
+					type: 'POST',
+					data: mydata,
+					success: function(resultReturn)
+					{ 
+						//alert("search success");
+           alert(resultReturn);
+						//alert(JSON.stringify(resultReturn));
+			      var _stringObj = JSON.stringify(resultReturn);
+			      var stringObj = JSON.parse(resultReturn);
+			      for(i = 0; i < stringObj.length; i++)
+            {
+					    var num = i + 1;
+					    document.getElementsByClassName("tabnum")[i].innerHTML = num;
+					    document.getElementsByClassName("tabname")[i].innerHTML = stringObj[i].texttitle;
+				      document.getElementsByClassName("tablink")[i].innerHTML = stringObj[i].command;
+				     }
+					},error: function (xhr, textStatus, errorThrown) 
+					{
+						alert("search failed");
+						console.log(textStatus);
+            alert(xhr.responseText);
+      		}
+				});
+			
+   });
+   
+   
+   
+   $("#readfav").click(function()
+	{
+		alert("read");
+		
+        
+          var mydata="user="+mylogin;
+        
+				$.ajax(
+				{
+					/*url: "http://port-9000.305server-idm4smb32469.codeanyapp.com/Login", */
+					url: "http://127.0.0.1:8080/readfavourlist",
+					type: 'POST',
+					data: mydata,
+					success: function(resultReturn)
+					{ 
+						//alert("search success");
+           alert(resultReturn);
+						//alert(JSON.stringify(resultReturn));
+			    //  var _stringObj = JSON.stringify(resultReturn);
+			      var stringObj = JSON.parse(resultReturn);
+				  alert(stringObj.length);
+			      for(i = 0; i < stringObj.length; i++)
+            {
+					    var num = i + 1;
+					    document.getElementsByClassName("tabnum")[i].innerHTML = num;
+					    document.getElementsByClassName("tabname")[i].innerHTML = stringObj[i].user + "<div id='"+stringObj[i]._id+"' class='removebutton'>Remove</a>";
+				      document.getElementsByClassName("tablink")[i].innerHTML = stringObj[i].favourite;
+					  document.getElementsByClassName("removelink")[i].innerHTML = stringObj[i]._id;
+				     }
+					},error: function (xhr, textStatus, errorThrown) 
+					{
+						alert("search failed");
+						console.log(textStatus);
+            alert(xhr.responseText);
+      		}
+				});
+			
+   });
+   
+   
+   
+   
+   $(".removelink").click(function(e)
+	{
+		
+		alert($(this).closest('tr').children('td.removelink').text());
+		
+		removeid=$(this).closest('tr').children('td.removelink').text();
+		
+	
+        
+          var mydata="removeid="+removeid;
+        alert(mydata);
+				$.ajax(
+				{
+					/*url: "http://port-9000.305server-idm4smb32469.codeanyapp.com/Login", */
+					url: "http://127.0.0.1:8080/removefavourlist",
+					type: 'POST',
+					data: mydata,
+					success: function(resultReturn)
+					{ 
+						//alert("search success");
+           alert(resultReturn);
+						//alert(JSON.stringify(resultReturn));
+			      var _stringObj = JSON.stringify(resultReturn);
+			      var stringObj = JSON.parse(resultReturn);
+			      for(i = 0; i < stringObj.length; i++)
+            {
+					    var num = i + 1;
+					    document.getElementsByClassName("tabnum")[i].innerHTML = num;
+					    document.getElementsByClassName("tabname")[i].innerHTML = stringObj[i].texttitle;
+				      document.getElementsByClassName("tablink")[i].innerHTML = stringObj[i].command;
+				     }
+					},error: function (xhr, textStatus, errorThrown) 
+					{
+						alert("search failed");
+						console.log(textStatus);
+            alert(xhr.responseText);
+      		}
+				});
+			
+   });
+   
+});
+</script>
+<body>
+  <div class = "mask">
+	<div class = "style1">Do you think you are Gaming Engrossed?</div>
+  <a href="/favlistpage">favourite list</a> <a href="/logout">log out</a>
+  	<br>
+  	You can find doctor form below information to help you. 
+	
+		<h1>Integrated Community Centre for Mental Wellness (Kwai Tsing District)</h1>
+		<h1>Service Description</h3>
+	To enhance the social support and re-integration of the ex-mentally ill persons into the community, the Social Welfare Department has implemented the Integrated Community Centre for Mental Wellness (ICCMW) in all the districts across the territory since October 2010.  Through the one-stop and integrated service mode, the ICCMW provides one-stop, district-based and accessible community support and social rehabilitation services ranging from early prevention to risk management for ex-mentally ill persons, persons with suspected mental health problems, their families / carers and residents living in the serving district through a single-entry point
+	<b>Kwai Fong Estate, Industrial Areas in Tai Lin Pai Road</b>
+	<a href="/map.html">You can find it at Google map.</a>
+	
+  	<div id="fav1text"></div><button id="fav1" class="button">
+    	Add to my favourite list
+  	</button>
+	
+	<br><br><br>
+	
+	Hong Kong Psychiatrist List
+	<a href="https://www.edr.hk/speciality/doctor/psychiatry"> Click Here</a>
+	<div id="fav2text"></div><button id="fav2" class="button">
+
+    	Add to my favourite list
+  	</button>
+    <br><br><br>
+	
+	<div id="readfav">
+    	Read favorite list
+  	</div>
+
+   <table id="mytable">
+      <tr>
+          <td class = "tabnum"></td>
+           <td class = "tabname"></td>
+           <td class = "tablink"></td>
+		   <td class = "removelink"></td>
+          </tr>
+          <tr>
+          <td class = "tabnum"></td>
+           <td class = "tabname"></td>
+		   <td class = "tablink"></td>
+           <td class = "removelink"></td>
+          </tr>
+  </table>
+  </div>
+  
+</body>
+
+</html>
